@@ -3685,7 +3685,7 @@ electron-to-chromium@^1.3.164:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.169.tgz#f9722d3f6a18a19c1fc1216bf9e1654daafab539"
   integrity sha512-CxKt4ONON7m0ekVaFzvTZakHgGQsLMRH0J8W6h4lhyBNgskj3CIJz4bj+bh5+G26ztAe6dZjmYUeEW4u/VSnLQ==
 
-element-ui@^2.4.11:
+element-ui@^2.9.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.9.2.tgz#f02b6b1dfb937044addbf204eaa15860d544ad84"
   integrity sha512-HU5DDKivv2UFZghVWiP3I74IbTzSW8VXc070fM787i1X/u9f43olDuu3S6Pe9z87Z1oNjXt06ZmBlLYtySJMCw==
@@ -6847,7 +6847,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt@^2.0.0:
+nuxt@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.8.1.tgz#10a307e51973fa7b55abfeb41b84c76cbdd6f2f6"
   integrity sha512-y0XsKvusxmtWVsBB4kt+yA7+KoALPnUvkfLBxSy2kV2S1AudGNYAJK0IdUAP4xKd0QJSc9IzSDVat8UZi4FEQA==
