@@ -1,10 +1,10 @@
 <template>
   <div class="page-index">
-    page index
+    <h2>Create My Account</h2>
 
-    <div class="inputs">
-      <input type="text" />
-    </div>
+    <ElButton icon="el-icon-arrow-right">
+      Create My Account
+    </ElButton>
   </div>
 </template>
 
