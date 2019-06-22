@@ -1,8 +1,5 @@
 export default {
-  mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+  mode: 'spa',
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -16,30 +13,12 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: ['element-ui/lib/theme-chalk/index.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: ['@/plugins/element-ui'],
-  /*
-   ** Nuxt.js modules
-   */
   modules: ['@nuxtjs/pwa', '@nuxtjs/eslint-module'],
-  /*
-   ** Build configuration
-   */
   build: {
     transpile: [/^element-ui/],
-    /*
-     ** You can extend webpack config here
-     */
     extend(config, ctx) {}
   }
 }
