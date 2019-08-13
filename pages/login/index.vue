@@ -5,19 +5,11 @@
     <ElButton icon="el-icon-arrow-right" @click="login">
       Create My Account
     </ElButton>
-
-    {{ userData }}
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      isLogin: false,
-      userData: null
-    }
-  },
   methods: {
     login: function() {
       this.$store.dispatch('loginWithGoogle')

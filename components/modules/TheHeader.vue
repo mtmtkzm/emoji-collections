@@ -15,19 +15,10 @@
 
         <ElDropdownMenu slot="dropdown">
           <ElDropdownItem v-if="user">
-            <div @click="logout">
-              LOG OUT
-            </div>
-          </ElDropdownItem>
-          <ElDropdownItem v-if="user" @click="logout">
-            PROFILE
+            <div @click="logout">LOG OUT</div>
           </ElDropdownItem>
         </ElDropdownMenu>
       </ElDropdown>
-    </template>
-
-    <template v-else>
-      <NuxtLink to="/login">LOG IN</NuxtLink>
     </template>
   </header>
 </template>

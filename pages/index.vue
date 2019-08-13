@@ -6,10 +6,8 @@
 
 <script>
 export default {
-  computed: {
-    user: function() {
-      return this.$store.state.user
-    }
+  mounted() {
+    console.log('this.$store.state.user:', this.$store.state.user)
   }
 }
 </script>
