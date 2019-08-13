@@ -19,6 +19,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'no-console': 'warn'
+    'no-console': 'warn',
+    "vue/component-name-in-template-casing": ["error", "PascalCase", {
+      "registeredComponentsOnly": false,
+      "ignores": []
+    }]
   }
 }

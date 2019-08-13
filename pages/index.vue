@@ -1,10 +1,6 @@
 <template>
   <div class="page-index">
     <h2>TOP PAGE</h2>
-
-    <pre>
-      {{ user }}
-    </pre>
   </div>
 </template>
 

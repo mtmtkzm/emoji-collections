@@ -1,13 +1,34 @@
 <template>
   <header class="the-header">
-    <div v-if="user">
-      <p>ようこそ、{{ user.data.displayName }} さん</p>
-      <button @click="logout">logout?</button>
-    </div>
+    <template v-if="user">
+      <ElDropdown trigger="click">
+        <div class="user">
+          <span class="user__name">
+            {{ user.data.displayName }}
+          </span>
+          <img
+            class="user__image"
+            :src="user.data.photoURL"
+            :alt="user.data.displayName"
+          />
+        </div>
 
-    <div v-else>
-      <NuxtLink to="/login">login?</NuxtLink>
-    </div>
+        <ElDropdownMenu slot="dropdown">
+          <ElDropdownItem v-if="user">
+            <div @click="logout">
+              LOG OUT
+            </div>
+          </ElDropdownItem>
+          <ElDropdownItem v-if="user" @click="logout">
+            PROFILE
+          </ElDropdownItem>
+        </ElDropdownMenu>
+      </ElDropdown>
+    </template>
+
+    <template v-else>
+      <NuxtLink to="/login">LOG IN</NuxtLink>
+    </template>
   </header>
 </template>
 
@@ -29,7 +50,22 @@ export default {
 
 <style>
 .the-header {
-  width: 100%;
-  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user__image {
+  width: 24px;
+  height: 24px;
+  margin-left: 12px;
+}
+
+.user__name {
 }
 </style>

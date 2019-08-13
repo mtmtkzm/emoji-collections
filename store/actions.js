@@ -6,7 +6,7 @@ export default {
       commit('setUser', { user })
     })
   },
-  loginWithGoogle({ commit }) {
+  loginWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithRedirect(provider)
   },

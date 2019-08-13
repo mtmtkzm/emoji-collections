@@ -1,7 +1,14 @@
 <template>
-  <div class="layout-default">
-    <TheHeader class="header" :user="user" />
-    <nuxt />
+  <div class="layouts-default">
+    <div class="sidebar">
+      Aside
+    </div>
+    <div class="container">
+      <TheHeader class="header" :user="user" />
+      <main>
+        <Nuxt />
+      </main>
+    </div>
   </div>
 </template>
 
@@ -20,4 +27,20 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.layouts-default {
+  display: flex;
+}
+
+.sidebar {
+  width: 104px;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  fill: #fff;
+}
+
+.container {
+  flex: 1;
+}
+</style>
