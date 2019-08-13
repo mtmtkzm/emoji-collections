@@ -15,7 +15,11 @@ export default {
   },
   loading: { color: '#fff' },
   css: ['element-ui/lib/theme-chalk/index.css'],
-  plugins: ['~/plugins/element-ui', '~/plugins/firebase'],
+  plugins: [
+    '~/plugins/element-ui',
+    '~/plugins/firebase',
+    '~/plugins/nuxt-client-init'
+  ],
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
