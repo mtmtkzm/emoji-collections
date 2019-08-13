@@ -39,6 +39,9 @@ export default {
       }
     ]
   ],
+  router: {
+    middleware: ['authenticated']
+  },
   build: {
     transpile: [/^element-ui/],
     extend(config, ctx) {}
