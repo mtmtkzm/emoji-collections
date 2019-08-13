@@ -14,10 +14,14 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#fff' },
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: ['element-ui/lib/theme-chalk/index.css', '~/assets/scss/style.scss'],
+  styleResources: {
+    scss: ['~/assets/scss/_vue-globals.scss']
+  },
   plugins: ['~/plugins/element-ui', '~/plugins/firebase'],
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
     [
