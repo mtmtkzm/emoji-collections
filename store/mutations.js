@@ -1,14 +1,7 @@
+import formatUser from '~/assets/js/modules/format-user'
+
 export default {
   setUser(state, { user }) {
-    state.user = user
-      ? {
-          id: user.uid,
-          data: {
-            photoURL: user.photoURL,
-            displayName: user.displayName,
-            email: user.email
-          }
-        }
-      : null
+    state.user = formatUser(user)
   }
 }
