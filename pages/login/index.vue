@@ -1,9 +1,12 @@
 <template>
   <div class="page-index">
-    <h2>Create My Account</h2>
+    <span class="title-emoji">
+      &#x1F606;
+    </span>
+    <h2>Welcome!</h2>
 
     <ElButton icon="el-icon-arrow-right" @click="login">
-      Create My Account
+      Sign in with Google
     </ElButton>
   </div>
 </template>
@@ -17,3 +20,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.page-index {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-emoji {
+  font-size: 200px;
+}
+</style>
