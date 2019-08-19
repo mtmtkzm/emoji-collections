@@ -14,9 +14,6 @@ import EmojiUploader from '~/components/EmojiUploader'
 export default {
   components: {
     EmojiUploader
-  },
-  mounted() {
-    console.log('this.$store.state.user:', this.$store.state.user)
   }
 }
 </script>

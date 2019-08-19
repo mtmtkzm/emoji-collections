@@ -1,10 +1,21 @@
 import firebase from '~/plugins/firebase'
 
 export default {
-  loginWithGoogle() {
+  loginWithGoogle({ commit }) {
     const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithRedirect(provider)
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function(result) {
+        const user = result.user
+        commit('setUser', { user })
+      })
+      .catch(error => {
+        console.error(error)
+      })
   },
+
   logoutWithGoogle({ commit }) {
     firebase
       .auth()
