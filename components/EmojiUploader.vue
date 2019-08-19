@@ -25,29 +25,54 @@ export default {
     handleChange: function(file) {
       this.upload(file.raw)
     },
-    upload: function(file) {
-      console.log(file)
+    async upload(file) {
+      const { lastModified, name, size, type, uid } = file
+      const url = await this.getUrl(file)
 
       firebase
+        .firestore()
+        .collection('emojis')
+        .add([
+          {
+            lastModified,
+            name,
+            size,
+            type,
+            uid,
+            url
+          }
+        ])
+
+      firebase
+        .firestore()
+        .collection('emojis')
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            console.log(doc.data())
+          })
+        })
+    },
+    async getUrl(file) {
+      const bucketPath = `emojis/${file.name}`
+      const uploadedUrl = await firebase
         .storage()
         .ref()
-        .child(`images/${file.name}`)
+        .child(bucketPath)
         .put(file)
-        .then(console.log)
+        .then(async () => {
+          const url = await firebase
+            .storage()
+            .ref()
+            .child(bucketPath)
+            .getDownloadURL()
+            .then(url => url)
+
+          return url
+        })
+
+      return uploadedUrl
     }
-    // async getUrl(bucketPath) {
-    //   let url = ''
-    //   await firebase
-    //     .storage()
-    //     .ref()
-    //     .child(bucketPath)
-    //     .getDownloadURL()
-    //     .then(res => {
-    //       url = res
-    //     })
-    //
-    //   return url
-    // }
   }
 }
 </script>
