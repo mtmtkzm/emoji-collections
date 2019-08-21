@@ -2,6 +2,15 @@ require('dotenv').config()
 
 export default {
   mode: 'spa',
+  env: {
+    FB_API_KEY: process.env.FB_API_KEY,
+    FB_AUTH_DOMAIN: process.env.FB_AUTH_DOMAIN,
+    FB_DATABASE_URL: process.env.FB_DATABASE_URL,
+    FB_PROJECT_ID: process.env.FB_PROJECT_ID,
+    FB_STORAGE_BUCKET: process.env.FB_STORAGE_BUCKET,
+    FB_MESSAGING_SENDER_ID: process.env.FB_MESSAGING_SENDER_ID,
+    FB_APP_ID: process.env.FB_APP_ID
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -25,21 +34,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv',
-    [
-      'nuxt-env',
-      {
-        keys: [
-          { key: 'FB_API_KEY' },
-          { key: 'FB_AUTH_DOMAIN' },
-          { key: 'FB_DATABASE_URL' },
-          { key: 'FB_PROJECT_ID' },
-          { key: 'FB_STORAGE_BUCKET' },
-          { key: 'FB_MESSAGING_SENDER_ID' },
-          { key: 'FB_APP_ID' }
-        ]
-      }
-    ]
+    '@nuxtjs/dotenv'
   ],
   router: {
     middleware: ['authenticated']
