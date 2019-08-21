@@ -1,27 +1,62 @@
 <template>
-  <ElUpload
-    action=""
-    list-type="picture-card"
-    :auto-upload="false"
-    :on-change="handleChange"
-  >
-    <span slot="default" class="el-icon-plus"></span>
-
-    <div slot="file" slot-scope="{ file }">
-      <img class="el-upload-list__item-thumbnail" :src="file.url" />
-      <span class="el-upload-list__item-delete" @click="handleRemove(file)">
-        <span class="el-icon-delete"></span>
-      </span>
-    </div>
-  </ElUpload>
+  <div class="EmojiUploader">
+    <ElDialog :visible.sync="isOpenDialog" width="100%">
+      <div class="dialog__inner">
+        <div class="uploader">
+          <ElUpload
+            action=""
+            drag
+            multiple
+            :auto-upload="false"
+            :on-change="handleChange"
+            list-type="picture"
+          >
+            <div class="uploader__body">
+              <span class="el-icon-upload2"></span>
+              <p>Drop Emojis here</p>
+            </div>
+          </ElUpload>
+        </div>
+        <div class="upload-flow">
+          <div>
+            <ElSteps
+              direction="vertical"
+              :space="100"
+              :active="9"
+              finish-status="process"
+            >
+              <ElStep
+                title="Select Emoji"
+                description="Drop Emojis or Click to open  file dialog."
+              />
+              <ElStep
+                title="Upload"
+                description="でもいまは選択された時点でアップロードしてる"
+              />
+            </ElSteps>
+          </div>
+        </div>
+      </div>
+    </ElDialog>
+  </div>
 </template>
 
 <script>
 import firebase from '~/plugins/firebase'
 
 export default {
+  data() {
+    return {
+      isOpenDialog: false
+    }
+  },
   methods: {
-    handleRemove: console.log,
+    openDialog: function() {
+      this.isOpenDialog = true
+    },
+    closeDialog: function() {
+      this.isOpenDialog = true
+    },
     handleChange: function(file) {
       this.upload(file.raw)
     },
@@ -29,6 +64,7 @@ export default {
       const userId = this.$store.state.user.id
 
       const fileId = String(file.uid)
+
       const fileData = {
         id: fileId,
         data: {
@@ -72,3 +108,37 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.EmojiUploader {
+  width: 70%;
+}
+
+.dialog__inner {
+  display: flex;
+}
+
+.uploader {
+  width: 360px;
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+    }
+    p {
+      margin-top: 10px;
+    }
+  }
+}
+
+.upload-flow {
+  flex: 1;
+  margin-left: 40px;
+}
+</style>

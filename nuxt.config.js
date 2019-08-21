@@ -41,6 +41,11 @@ export default {
   },
   build: {
     transpile: [/^element-ui/],
+    postcss: {
+      plugins: {
+        'postcss-nested': {}
+      }
+    },
     extend(config, ctx) {}
   }
 }
