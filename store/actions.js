@@ -32,5 +32,22 @@ export default {
       .signOut()
       .then(onSuccess)
       .catch(console.error)
+  },
+
+  // user object にある絵文字一覧を取得
+  async getUserEmojis({ commit }, { userId }) {
+    const list = await firebase
+      .firestore()
+      .collection('users')
+      .doc(userId)
+      .collection('emojis')
+      .get()
+      .then(snapshot => {
+        const emojis = []
+        snapshot.forEach(doc => emojis.push(doc.data()))
+        return emojis
+      })
+
+    commit('setUserEmojiList', { list })
   }
 }

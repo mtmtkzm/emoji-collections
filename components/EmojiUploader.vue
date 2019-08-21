@@ -26,32 +26,28 @@ export default {
       this.upload(file.raw)
     },
     async upload(file) {
-      const { lastModified, name, size, type, uid } = file
-      const url = await this.getUrl(file)
+      const userId = this.$store.state.user.id
 
+      const fileId = String(file.uid)
+      const fileData = {
+        id: fileId,
+        data: {
+          lastModified: file.lastModified,
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          url: await this.getUrl(file)
+        }
+      }
+
+      // ユーザ情報内にEmojiをいれる
       firebase
         .firestore()
+        .collection('users')
+        .doc(userId)
         .collection('emojis')
-        .add([
-          {
-            lastModified,
-            name,
-            size,
-            type,
-            uid,
-            url
-          }
-        ])
-
-      firebase
-        .firestore()
-        .collection('emojis')
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            console.log(doc.data())
-          })
-        })
+        .doc()
+        .set(fileData)
     },
     async getUrl(file) {
       const bucketPath = `emojis/${file.name}`
