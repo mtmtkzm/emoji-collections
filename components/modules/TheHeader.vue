@@ -14,7 +14,10 @@
         </div>
 
         <ElDropdownMenu slot="dropdown">
-          <ElDropdownItem v-if="user">
+          <ElDropdownItem disabled>
+            <NuxtLink to="/profile">PROFILE</NuxtLink>
+          </ElDropdownItem>
+          <ElDropdownItem v-if="user" divided>
             <div @click="logout">LOG OUT</div>
           </ElDropdownItem>
         </ElDropdownMenu>
@@ -39,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .the-header {
   display: flex;
   align-items: center;

@@ -3,6 +3,6 @@ export default {
     return !!state.user
   },
   userEmojiList(state) {
-    return state.user.emojis
+    return state.user ? state.user.emojis : []
   }
 }

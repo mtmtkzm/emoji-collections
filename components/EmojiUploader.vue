@@ -16,6 +16,11 @@
               <p>Drop Emojis here</p>
             </div>
           </ElUpload>
+
+          <ElButton type="primary" @click="uploadFiles">
+            Upload
+            <i class="el-icon-upload el-icon-right"></i>
+          </ElButton>
         </div>
         <div class="upload-flow">
           <div>
@@ -47,7 +52,8 @@ import firebase from '~/plugins/firebase'
 export default {
   data() {
     return {
-      isOpenDialog: false
+      isOpenDialog: false,
+      fileList: null
     }
   },
   methods: {
@@ -57,12 +63,17 @@ export default {
     closeDialog: function() {
       this.isOpenDialog = true
     },
-    handleChange: function(file) {
-      this.upload(file.raw)
+    handleChange: function(file, fileList) {
+      this.fileList = fileList
+    },
+    uploadFiles() {
+      if (!this.fileList) return
+      Object.values(this.fileList).forEach(file => {
+        this.upload(file.raw)
+      })
     },
     async upload(file) {
       const userId = this.$store.state.user.id
-
       const fileId = String(file.uid)
 
       const fileData = {

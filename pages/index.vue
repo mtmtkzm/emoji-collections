@@ -1,6 +1,6 @@
 <template>
   <div class="page-index">
-    <h2>TOP PAGE</h2>
+    <h2>Emojis</h2>
 
     <ElButton @click="openEmojiUploader">
       Upload Emojis
@@ -25,7 +25,8 @@ export default {
   },
   computed: {
     emojis: function() {
-      return this.$store.getters.userEmojiList
+      if (!this.$store.state.user) return
+      return this.$store.state.user.emojis
     }
   },
   async fetch({ store }) {
@@ -41,21 +42,27 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  display: flex;
-  flex-wrap: wrap;
-}
+.page-index {
+  h2 {
+    font-size: 48px;
+  }
 
-li {
-  border: 1px solid gray;
-  margin: 20px;
-  width: 128px;
-  height: 128px;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  li {
+    border: 1px solid gray;
+    margin: 20px;
+    width: 128px;
+    height: 128px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 </style>
